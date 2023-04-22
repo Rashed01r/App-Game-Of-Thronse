@@ -15,15 +15,16 @@ class CharacterItem extends StatelessWidget {
     double right = MediaQuery.of(context).viewInsets.right;
     double left = MediaQuery.of(context).viewInsets.left;
     double bottom = MediaQuery.of(context).viewInsets.bottom;
+    double font = MediaQuery.textScaleFactorOf(context);
 
     return Container(
       width: width,
       margin: EdgeInsets.only(
           top: top + 8, bottom: bottom + 8, left: left + 8, right: right + 8),
-      padding: EdgeInsets.all(4),
+      padding: EdgeInsets.all(3),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(5),
       ),
       child: GridTile(
         child: Container(
@@ -38,13 +39,12 @@ class CharacterItem extends StatelessWidget {
           width: width,
           height: height / 18,
           color: Colors.black54,
-          alignment: Alignment.bottomCenter,
+          alignment: Alignment.center,
           child: Text(
-            "${character.firstName}",
+            "${character.fullName}",
             style: TextStyle(
-              fontSize: width / 2,
-              height: height / 2,
-              color: Colors.red,
+              fontSize: font * 18,
+              color: Colors.white,
               fontWeight: FontWeight.bold,
             ),
           ),

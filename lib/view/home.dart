@@ -26,6 +26,7 @@ class _HomeState extends State<Home> {
     var provider = Provider.of<CharacterProvider>(context, listen: false);
 
     return Scaffold(
+      backgroundColor: Colors.grey[700],
       appBar: AppBar(
         title: Text("Characters"),
       ),
