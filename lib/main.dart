@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:game_of_thrones/data/repository.dart';
+import 'package:game_of_thrones/data/webService.dart';
+import 'package:game_of_thrones/logic/characterProvider.dart';
 import 'package:game_of_thrones/view/home.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp()); 
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -10,8 +14,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Home(),
+    return ChangeNotifierProvider(
+      create: (context) =>
+          CharacterProvider(repository: Repository(webService: WebService())),
+      child: MaterialApp(
+        home: Home(),
+        debugShowCheckedModeBanner: false,
+      ),
     );
   }
 }
