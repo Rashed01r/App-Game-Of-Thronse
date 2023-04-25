@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:game_of_thrones/data/models.dart';
+import 'package:game_of_thrones/view/detalisCharacter.dart';
 
 class CharacterItem extends StatelessWidget {
   final Character character;
@@ -26,26 +27,37 @@ class CharacterItem extends StatelessWidget {
         color: Colors.white,
         borderRadius: BorderRadius.circular(5),
       ),
-      child: GridTile(
-        child: Container(
-          color: Colors.grey,
-          child: FadeInImage.assetNetwork(
-            placeholder: "images/loading.gif",
-            image: "${character.imageUrl}",
-            fit: BoxFit.cover,
+      child: InkWell(
+        onTap: () {
+          Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => DetalisCharacter(
+              character: character,
+            ),
+          ));
+        },
+        child: GridTile(
+          child: Hero(
+            tag: character.id,
+            child: Container(
+              color: Colors.grey,
+              child: FadeInImage.assetNetwork(
+                placeholder: "images/97952-loading-animation-blue.gif",
+                image: "${character.imageUrl}",
+                fit: BoxFit.cover,
+              ),
+            ),
           ),
-        ),
-        footer: Container(
-          width: width,
-          height: height / 18,
-          color: Colors.black54,
-          alignment: Alignment.center,
-          child: Text(
-            "${character.fullName}",
-            style: TextStyle(
-              fontSize: font * 18,
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
+          footer: Container(
+            height: height / 18,
+            color: Colors.black54,
+            alignment: Alignment.center,
+            child: Text(
+              "${character.fullName}",
+              style: TextStyle(
+                fontSize: font * 17,
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
         ),

@@ -1,5 +1,5 @@
 class Character {
-  int? id;
+  dynamic id;
   String? firstName;
   String? lastName;
   String? fullName;

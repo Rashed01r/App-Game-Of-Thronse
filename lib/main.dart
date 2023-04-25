@@ -15,8 +15,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (context) =>
-          CharacterProvider(repository: Repository(webService: WebService())),
+      create: (context) => CharacterProvider(
+          repository: Repository(webService: WebService()),),
       child: MaterialApp(
         home: Home(),
         debugShowCheckedModeBanner: false,
